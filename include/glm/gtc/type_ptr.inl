@@ -1,4 +1,5 @@
 /// @ref gtc_type_ptr
+/// @file glm/gtc/type_ptr.inl
 
 #include <cstring>
 
@@ -152,109 +153,109 @@ namespace glm
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T const * value_ptr(qua<T, Q> const& q)
+	GLM_FUNC_QUALIFIER T const * value_ptr(tquat<T, Q> const& q)
 	{
 		return &(q[0]);
 	}
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T* value_ptr(qua<T, Q>& q)
+	GLM_FUNC_QUALIFIER T* value_ptr(tquat<T, Q>& q)
 	{
 		return &(q[0]);
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<1, T, Q> make_vec1(vec<1, T, Q> const& v)
+	inline vec<1, T, Q> make_vec1(vec<1, T, Q> const& v)
 	{
 		return v;
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<1, T, Q> make_vec1(vec<2, T, Q> const& v)
+	inline vec<1, T, Q> make_vec1(vec<2, T, Q> const& v)
 	{
 		return vec<1, T, Q>(v);
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<1, T, Q> make_vec1(vec<3, T, Q> const& v)
+	inline vec<1, T, Q> make_vec1(vec<3, T, Q> const& v)
 	{
 		return vec<1, T, Q>(v);
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<1, T, Q> make_vec1(vec<4, T, Q> const& v)
+	inline vec<1, T, Q> make_vec1(vec<4, T, Q> const& v)
 	{
 		return vec<1, T, Q>(v);
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<2, T, Q> make_vec2(vec<1, T, Q> const& v)
+	inline vec<2, T, Q> make_vec2(vec<1, T, Q> const& v)
 	{
 		return vec<2, T, Q>(v.x, static_cast<T>(0));
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<2, T, Q> make_vec2(vec<2, T, Q> const& v)
+	inline vec<2, T, Q> make_vec2(vec<2, T, Q> const& v)
 	{
 		return v;
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<2, T, Q> make_vec2(vec<3, T, Q> const& v)
+	inline vec<2, T, Q> make_vec2(vec<3, T, Q> const& v)
 	{
 		return vec<2, T, Q>(v);
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<2, T, Q> make_vec2(vec<4, T, Q> const& v)
+	inline vec<2, T, Q> make_vec2(vec<4, T, Q> const& v)
 	{
 		return vec<2, T, Q>(v);
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> make_vec3(vec<1, T, Q> const& v)
+	inline vec<3, T, Q> make_vec3(vec<1, T, Q> const& v)
 	{
 		return vec<3, T, Q>(v.x, static_cast<T>(0), static_cast<T>(0));
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> make_vec3(vec<2, T, Q> const& v)
+	inline vec<3, T, Q> make_vec3(vec<2, T, Q> const& v)
 	{
 		return vec<3, T, Q>(v.x, v.y, static_cast<T>(0));
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> make_vec3(vec<3, T, Q> const& v)
+	inline vec<3, T, Q> make_vec3(vec<3, T, Q> const& v)
 	{
 		return v;
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> make_vec3(vec<4, T, Q> const& v)
+	inline vec<3, T, Q> make_vec3(vec<4, T, Q> const& v)
 	{
 		return vec<3, T, Q>(v);
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, T, Q> make_vec4(vec<1, T, Q> const& v)
+	inline vec<4, T, Q> make_vec4(vec<1, T, Q> const& v)
 	{
 		return vec<4, T, Q>(v.x, static_cast<T>(0), static_cast<T>(0), static_cast<T>(1));
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, T, Q> make_vec4(vec<2, T, Q> const& v)
+	inline vec<4, T, Q> make_vec4(vec<2, T, Q> const& v)
 	{
 		return vec<4, T, Q>(v.x, v.y, static_cast<T>(0), static_cast<T>(1));
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, T, Q> make_vec4(vec<3, T, Q> const& v)
+	inline vec<4, T, Q> make_vec4(vec<3, T, Q> const& v)
 	{
 		return vec<4, T, Q>(v.x, v.y, v.z, static_cast<T>(1));
 	}
 
 	template <typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, T, Q> make_vec4(vec<4, T, Q> const& v)
+	inline vec<4, T, Q> make_vec4(vec<4, T, Q> const& v)
 	{
 		return v;
 	}
@@ -374,10 +375,10 @@ namespace glm
 	}
 
 	template<typename T>
-	GLM_FUNC_QUALIFIER qua<T, defaultp> make_quat(T const *const ptr)
+	GLM_FUNC_QUALIFIER tquat<T, defaultp> make_quat(T const *const ptr)
 	{
-		qua<T, defaultp> Result;
-		memcpy(value_ptr(Result), ptr, sizeof(qua<T, defaultp>));
+		tquat<T, defaultp> Result;
+		memcpy(value_ptr(Result), ptr, sizeof(tquat<T, defaultp>));
 		return Result;
 	}
 

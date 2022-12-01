@@ -1,4 +1,5 @@
 /// @ref gtx_transform2
+/// @file glm/gtx/transform2.inl
 
 namespace glm
 {
@@ -119,7 +120,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> scaleBias(mat<4, 4, T, Q> const& m, T scale, T bias)
 	{
-		return m * scaleBias<T, Q>(scale, bias);
+		return m * scaleBias(scale, bias);
 	}
 }//namespace glm
 

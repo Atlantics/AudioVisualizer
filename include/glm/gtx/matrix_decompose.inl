@@ -1,4 +1,5 @@
 /// @ref gtx_matrix_decompose
+/// @file glm/gtx/matrix_decompose.inl
 
 #include "../gtc/constants.hpp"
 #include "../gtc/epsilon.hpp"
@@ -29,7 +30,7 @@ namespace detail
 	// Decomposes the mode matrix to translations,rotation scale components
 
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER bool decompose(mat<4, 4, T, Q> const& ModelMatrix, vec<3, T, Q> & Scale, qua<T, Q> & Orientation, vec<3, T, Q> & Translation, vec<3, T, Q> & Skew, vec<4, T, Q> & Perspective)
+	GLM_FUNC_QUALIFIER bool decompose(mat<4, 4, T, Q> const& ModelMatrix, vec<3, T, Q> & Scale, tquat<T, Q> & Orientation, vec<3, T, Q> & Translation, vec<3, T, Q> & Skew, vec<4, T, Q> & Perspective)
 	{
 		mat<4, 4, T, Q> LocalMatrix(ModelMatrix);
 
@@ -153,7 +154,7 @@ namespace detail
 		// }
 
 		int i, j, k = 0;
-		T root, trace = Row[0].x + Row[1].y + Row[2].z;
+		float root, trace = Row[0].x + Row[1].y + Row[2].z;
 		if(trace > static_cast<T>(0))
 		{
 			root = sqrt(trace + static_cast<T>(1.0));
@@ -172,18 +173,12 @@ namespace detail
 			j = Next[i];
 			k = Next[j];
 
-#           ifdef GLM_FORCE_QUAT_DATA_XYZW
-                int off = 0;
-#           else
-                int off = 1;
-#           endif
-
 			root = sqrt(Row[i][i] - Row[j][j] - Row[k][k] + static_cast<T>(1.0));
 
-			Orientation[i + off] = static_cast<T>(0.5) * root;
+			Orientation[i] = static_cast<T>(0.5) * root;
 			root = static_cast<T>(0.5) / root;
-			Orientation[j + off] = root * (Row[i][j] + Row[j][i]);
-			Orientation[k + off] = root * (Row[i][k] + Row[k][i]);
+			Orientation[j] = root * (Row[i][j] + Row[j][i]);
+			Orientation[k] = root * (Row[i][k] + Row[k][i]);
 			Orientation.w = root * (Row[j][k] - Row[k][j]);
 		} // End if <= 0
 
